@@ -1,0 +1,63 @@
+.main {
+  background: #f0f2f5;
+  padding: 20px;
+  flex: 1;
+}
+.partI {
+  display: flex;
+}
+.lastUser {
+  width: 200px;
+  height: 140px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  background: #fff;
+}
+.user {
+  display: flex;
+  margin-bottom: 20px;
+}
+.userIcon {
+  width: 40px;
+  height: 40px;
+  background: blue;
+}
+.userInfo {
+  flex: 1;
+  padding: 0 10px;
+}
+.userTitle {
+  display: flex;
+  justify-content: space-between;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+.itemIcon {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+}
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.userItem {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+.label {
+  margin-right: 20px;
+}
+
+.statusTitle {
+  border: 1px solid #000;
+  background: #ccc;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  margin: 20px 0;
+}
+.statusContent {
+  display: flex;
+}

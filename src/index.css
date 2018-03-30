@@ -1,0 +1,72 @@
+@import "~normalize.css/normalize.css";
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+html {
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 1;
+}
+/* 
+@media (min-height: 700px) and (max-height: 899px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-height: 900px) and (max-height: 999px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-height: 1000px) and (max-height: 1199px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-height: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+ */
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+canvas {
+  display: block;
+  margin: 0;
+  padding: 0;
+}

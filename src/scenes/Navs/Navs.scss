@@ -1,0 +1,46 @@
+.main {
+  width: 200px;
+  background: #001529;
+  height: 100vh;
+  color: #fff;
+}
+.title {
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  background: #00284d;
+}
+.navItemName {
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.nameIcon {
+  display: flex;
+  align-items: center;
+}
+.icon1 {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+}
+.icon2 {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+}
+.navContent {
+}
+.navChild {
+  display: block;
+  padding: 0 20px;
+  line-height: 25px;
+  color: #fff;
+  text-decoration: none;
+}
+.active {
+  background: #1890ff;
+}
