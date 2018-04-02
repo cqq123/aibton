@@ -1,7 +1,12 @@
 import qs from 'qs';
 
 export const fetchRequest = (url, param) => {
-  const resultUrl = `${url}?${qs.stringify(param)}`;
+  let resultUrl = '';
+  if (param) {
+    resultUrl = `${url}?${qs.stringify(param)}`;
+  } else {
+    resultUrl = url;
+  }
   return fetch(
     resultUrl,
     {

@@ -1,12 +1,10 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
-import { reducer as bicycleReducer } from './scenes/Bicycle/data/reducer';
-import { reducer as busReducer } from './scenes/Bus/data/reducer';
+import { reducer as publishReducer } from './scenes/Publish/data/reducer';
 
 const reducer = combineReducers({
-  Bicycle: bicycleReducer,
-  Bus: busReducer,
+  publish: publishReducer,
 });
 
 export default function configStore(initialState = {}) {

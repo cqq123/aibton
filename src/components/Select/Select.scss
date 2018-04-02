@@ -1,0 +1,75 @@
+.main {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  z-index: 100;
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
+}
+
+.control {
+  background: #ffffff;
+  // border: 1px solid #526b76;
+  border-radius: 4px;
+  color: #999;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 28px 0 10px;
+
+  &:hover {
+    background: lighten(#fff, 4%);
+    color: #aaa;
+  }
+}
+
+.controlText {
+  height: 28px;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.optionList {
+  position: absolute;
+  top: 100%;
+  margin-top: 2px;
+  border: 1px solid #dddddd;
+  padding: 4px 0;
+  background: #ffffff;
+  border-radius: 4px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.caret {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  border-color: #aaa transparent transparent;
+  border-style: solid;
+  border-width: 6px 6px;
+  margin-top: -3px;
+  transition: transform .3s;
+
+  &.up {
+    transform: translateY(-50%) rotateZ(180deg);
+  }
+}
+.optionList::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px;
+}
+.optionList::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+  border-radius: 2px;
+  background: #7cd5d8;
+  opacity: 0.6;
+}
+.optionList::-webkit-scrollbar-track {/*滚动条里面轨道*/
+  border-radius: 0;
+  background: rgba(0,0,0,0.1);
+}
+

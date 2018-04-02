@@ -4,7 +4,7 @@ import './index.css';
 import style from './app.scss';
 import Login from './scenes/Login';
 import ServerMain from './scenes/ServerMain';
-import Running from './scenes/Running';
+
 
 const App = () => (
   <BrowserRouter>

@@ -1,0 +1,19 @@
+.main {
+  color: #999;
+  cursor: pointer;
+  padding: 0 10px;
+  text-align: center;
+
+  &:hover {
+    background: #00ccd3;
+    color: #fff;
+  }
+}
+
+.wrapper {
+  font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,0 +1,33 @@
+.radioContent {
+  display: flex;
+  align-items: center;
+}
+.radio {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  border: 1px solid #00d2d9;
+  overflow: hidden;
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+  }
+}
+.check {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background: #00d2d9;
+}
+.label {
+  margin-left: 5px;
+  cursor: pointer;
+}
