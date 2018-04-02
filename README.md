@@ -1,5 +1,5 @@
-# react-redux-router-webpack
-react react-redux react-router webpack 开发环境
+# aibton
+自动项目发布
 ------
     npm install
     npm run dev
