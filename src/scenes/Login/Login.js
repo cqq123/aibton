@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import style from './Login.scss';
 /* eslint-disable */
 import QInput from 'components/QInput';
 /* eslint-enable */
+import { loginSys } from './data/actions';
 
 class Login extends Component {
   constructor(props) {
@@ -22,6 +25,10 @@ class Login extends Component {
       position: value,
     });
   }
+  handleLogin() {
+    const { name, post } = this.state;
+    this.props.loginSys(name, post);
+  }
   render() {
     const { name, position } = this.state;
     return (
@@ -40,11 +47,17 @@ class Login extends Component {
             value={position}
             placeholder="请输入职位"
           />
-          <div className={style.loginBtn}>登陆</div>
+          <div className={style.loginBtn} onClick={() => this.handleLogin()}>登陆</div>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+const mapDispatchToProps = {
+  loginSys,
+};
+Login.propTypes = {
+  loginSys: PropTypes.func.isRequired,
+};
+export default connect(null, mapDispatchToProps)(Login);

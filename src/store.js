@@ -2,9 +2,11 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
 import { reducer as publishReducer } from './scenes/Publish/data/reducer';
+import { reducer as loginReducer } from './scenes/Login/data/reducer';
 
 const reducer = combineReducers({
   publish: publishReducer,
+  login: loginReducer,
 });
 
 export default function configStore(initialState = {}) {

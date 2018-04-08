@@ -11,9 +11,7 @@ export const changeProjectType = type => ({
 
 export const getProjectType = () =>
   async (dispatch) => {
-    const { msg = [] } = await fetchRequest('/sysProject/getAll', {
-      token: null,
-    });
+    const { msg = [] } = await fetchRequest('/sysProject/getAll');
     dispatch({
       type: GET_PROJECT_TYPE,
       payload: msg,
