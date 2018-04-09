@@ -2,7 +2,7 @@ const express = require('express');
 const request = require('request');
 const path = require('path');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.dev.config');
+const webpackConfig = require('./webpack.dev');
 const configPath = require('./server.config').paths;
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -15,12 +15,11 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 const pathKey = Object.keys(configPath);
-console.log(pathKey, '-------------------');
 for (let i = 0; i < pathKey.length; i++) {
   app.use(pathKey[i], (req, res) => {
     if (configPath[pathKey[i]].indexOf('http:') !== -1) {
+      console.log('xoxooxox');
       const url = `${configPath[pathKey[i]]}${pathKey[i]}${req.url}`;
-      console.log(url, '--------------------------url');
       req.pipe(request(url)).pipe(res);
     } else {
       const data = require(configPath[pathKey[i]]);

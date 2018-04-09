@@ -1,78 +1,90 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+import { connect } from 'react-redux';
 import style from './Running.scss';
 /* eslint-disable */
 import ServerItem from 'components/ServerItem';
 import StatusItem from 'components/StatusItem';
 /* eslint-enable */
+import { fetchSystemInfo, fetchSystemProjectStatus } from './data/actions';
 
-const Running = () => (
-  <div className={style.main}>
-    <div className={style.partI}>
-      <ServerItem
-        data={50}
-        name="CPU"
-      />
-      <ServerItem
-        data={78}
-        name="内存"
-      />
-      <div className={style.lastUser}>
-        <div className={style.user}>
-          <span className={style.userIcon} />
-          <div className={style.userInfo}>
-            <div className={style.userTitle}>
-              <span>最后操作人</span>
-              <span className={style.itemIcon} />
+class Running extends Component {
+  componentDidMount() {
+    this.props.fetchSystemInfo();
+    this.props.fetchSystemProjectStatus();
+  }
+  render() {
+    const { systemInfoCpu, systemInfoMemory, systemInfoOperator } = this.props;
+    return (
+      <div className={style.main}>
+        <div className={style.partI}>
+          <ServerItem
+            data={systemInfoCpu.percent}
+            name={systemInfoCpu.name}
+          />
+          <ServerItem
+            data={systemInfoMemory.percent}
+            name={systemInfoMemory.name}
+          />
+          <div className={style.lastUser}>
+            <div className={style.user}>
+              <span className={style.userIcon} />
+              <div className={style.userInfo}>
+                <div className={style.userTitle}>
+                  <span>最后操作人</span>
+                  <span className={style.itemIcon} />
+                </div>
+                <span className={style.name}>{systemInfoOperator.name}</span>
+              </div>
             </div>
-            <span className={style.name}>name</span>
+            <div className={style.userItem}>
+              <span className={style.label}>操作分支</span>
+              <span>{systemInfoOperator.branch}</span>
+            </div>
+            <div className={style.userItem}>
+              <span className={style.label}>操作时间</span>
+              <span>{systemInfoOperator.time}</span>
+            </div>
           </div>
         </div>
-        <div className={style.userItem}>
-          <span className={style.label}>操作分支</span>
-          <span>master</span>
+        <div className={style.statusTitle}>
+          <span>服务器项目运行状态</span>
         </div>
-        <div className={style.userItem}>
-          <span className={style.label}>操作时间</span>
-          <span>12：00</span>
+        <div className={style.statusContent}>
+          {
+            this.props.systemProjectList.map((a, idx) => (
+              <StatusItem
+                key={idx}
+                name={a.name}
+                status={a.status}
+                branch={a.branch}
+                operatorName={a.operateName}
+                operatorTime={a.operateTime}
+              />
+            ))
+          }
         </div>
       </div>
-    </div>
-    <div className={style.statusTitle}>
-      <span>服务器项目运行状态</span>
-    </div>
-    <div className={style.statusContent}>
-      <StatusItem
-        name="CORS"
-        status="运行中"
-        branch="master"
-        operatorName="NAme"
-        operatorTime={moment().format('YYYY-DD-MM HH:mm:SS')}
-      />
-      <StatusItem
-        name="CORS"
-        status="运行中"
-        branch="master"
-        operatorName="NAme"
-        operatorTime={moment().format('YYYY-DD-MM HH:mm:SS')}
-      />
-      <StatusItem
-        name="CORS"
-        status="运行中"
-        branch="master"
-        operatorName="NAme"
-        operatorTime={moment().format('YYYY-DD-MM HH:mm:SS')}
-      />
-      <StatusItem
-        name="CORS"
-        status="运行中"
-        branch="master"
-        operatorName="NAme"
-        operatorTime={moment().format('YYYY-DD-MM HH:mm:SS')}
-      />
-    </div>
+    );
+  }
+}
 
-  </div>
-);
-
-export default Running;
+Running.propTypes = {
+  fetchSystemInfo: PropTypes.func.isRequired,
+  fetchSystemProjectStatus: PropTypes.func.isRequired,
+  systemInfoCpu: PropTypes.object.isRequired,
+  systemInfoMemory: PropTypes.object.isRequired,
+  systemInfoOperator: PropTypes.object.isRequired,
+  systemProjectList: PropTypes.array.isRequired,
+};
+const mapStateToProps = ({ running }) => ({
+  systemInfoCpu: running.systemInfoCpu,
+  systemInfoMemory: running.systemInfoMemory,
+  systemInfoOperator: running.systemInfoOperator,
+  systemProjectList: running.systemProjectList,
+});
+export default connect(mapStateToProps, {
+  fetchSystemInfo,
+  fetchSystemProjectStatus,
+})(Running);

@@ -26,8 +26,9 @@ class Login extends Component {
     });
   }
   handleLogin() {
-    const { name, post } = this.state;
-    this.props.loginSys(name, post);
+    const { name, position } = this.state;
+    console.log('login----------------------');
+    this.props.loginSys(name, position);
   }
   render() {
     const { name, position } = this.state;

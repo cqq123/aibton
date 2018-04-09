@@ -3,10 +3,12 @@ import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
 import { reducer as publishReducer } from './scenes/Publish/data/reducer';
 import { reducer as loginReducer } from './scenes/Login/data/reducer';
+import { reducer as runningReducer } from './scenes/Running/data/reducer';
 
 const reducer = combineReducers({
   publish: publishReducer,
   login: loginReducer,
+  running: runningReducer,
 });
 
 export default function configStore(initialState = {}) {
