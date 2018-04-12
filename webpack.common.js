@@ -65,9 +65,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'YONG',
+      title: 'YONG_AIBTON',
       favicon: './favicon.png',
-      template: path.resolve(__dirname, 'src/index.html'),
+      template: path.resolve(__dirname, 'src/index.ejs'),
+      inject: true,
     }),
   ],
 };
