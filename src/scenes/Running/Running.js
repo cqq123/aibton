@@ -8,11 +8,13 @@ import ServerItem from 'components/ServerItem';
 import StatusItem from 'components/StatusItem';
 /* eslint-enable */
 import { fetchSystemInfo, fetchSystemProjectStatus } from './data/actions';
+import { getLoginInfo } from '../Login/data/actions';
 
 class Running extends Component {
   componentDidMount() {
     this.props.fetchSystemInfo();
     this.props.fetchSystemProjectStatus();
+    this.props.getLoginInfo();
   }
   render() {
     const { systemInfoCpu, systemInfoMemory, systemInfoOperator } = this.props;
@@ -77,6 +79,7 @@ Running.propTypes = {
   systemInfoMemory: PropTypes.object.isRequired,
   systemInfoOperator: PropTypes.object.isRequired,
   systemProjectList: PropTypes.array.isRequired,
+  getLoginInfo: PropTypes.func.isRequired,
 };
 const mapStateToProps = ({ running }) => ({
   systemInfoCpu: running.systemInfoCpu,
@@ -87,4 +90,5 @@ const mapStateToProps = ({ running }) => ({
 export default connect(mapStateToProps, {
   fetchSystemInfo,
   fetchSystemProjectStatus,
+  getLoginInfo,
 })(Running);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import style from './Login.scss';
 /* eslint-disable */
 import QInput from 'components/QInput';
@@ -15,6 +16,11 @@ class Login extends Component {
       position: '',
     };
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.isLogin && prevProps.isLogin !== this.props.isLogin) {
+      this.props.history.push('/server/running');
+    }
+  }
   handleChangeName(value) {
     this.setState({
       name: value,
@@ -27,7 +33,6 @@ class Login extends Component {
   }
   handleLogin() {
     const { name, position } = this.state;
-    console.log('login----------------------');
     this.props.loginSys(name, position);
   }
   render() {
@@ -35,7 +40,6 @@ class Login extends Component {
     return (
       <div className={style.main}>
         <div className={style.inputContent}>
-          {/* <span className={style.label}>Aibton Auto Server</span> */}
           <QInput
             className={style.input}
             changeKeywords={value => this.handleChangeName(value)}
@@ -58,7 +62,13 @@ class Login extends Component {
 const mapDispatchToProps = {
   loginSys,
 };
+const mapStateToProps = ({ login }) => ({
+  isLogin: login.isLogin,
+});
+
 Login.propTypes = {
   loginSys: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  isLogin: PropTypes.bool.isRequired,
 };
-export default connect(null, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

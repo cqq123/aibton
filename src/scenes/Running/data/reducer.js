@@ -27,9 +27,18 @@ export const reducer = (state = initialState, action) => {
     case FETCH_SYSTEM_INFO:
       return {
         ...state,
-        systemInfoCpu: action.payload.cpu,
-        systemInfoMemory: action.payload.memory,
-        systemInfoOperator: action.payload.operator,
+        systemInfoCpu: {
+          ...state.systemInfoCpu,
+          ...action.payload.cpu,
+        },
+        systemInfoMemory: {
+          ...state.systemInfoMemory,
+          ...action.payload.memory,
+        },
+        systemInfoOperator: {
+          ...state.systemInfoOperator,
+          ...action.payload.operator,
+        },
       };
     case FETCH_SYSTEM_PROJECTSTATUS:
       return {

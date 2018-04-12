@@ -1,0 +1,33 @@
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.15);
+
+}
+.content {
+  padding: 15px;
+  width: 200px;
+  margin: 300px auto 0 auto;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
+.closeIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background: url(./close.png);
+  cursor: pointer;
+}
+.msg {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './Header.scss';
 
-const Header = () => (
+const Header = ({ name, post }) => (
   <div className={style.main}>
-    <span className={style.lable}>胡志辉</span>
-    <span className={style.lable}>java</span>
+    <span className={style.lable}>{name}</span>
+    <span className={style.lable}>{post}</span>
   </div>
 );
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired,
+  post: PropTypes.string.isRequired,
+};
 
 export default Header;

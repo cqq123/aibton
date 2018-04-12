@@ -16,9 +16,12 @@ class Select extends Component {
 
   get controlText() {
     const { children, value } = this.props;
-    return React.Children
-      .toArray(children)
-      .find(child => child.props.value === value).props.label;
+    if (value !== '') {
+      return React.Children
+        .toArray(children)
+        .find(child => child.props.value === value).props.label;
+    }
+    return '请选择';
   }
 
   handleSelect(selectValue) {
